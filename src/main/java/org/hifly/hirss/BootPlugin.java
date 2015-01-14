@@ -52,7 +52,7 @@ public class BootPlugin {
 			}
         });
 
-        RssConfiguration conf = new RssConfiguration(new File("/home/hifly/projects/hirss/src/main/resources/test.properties"));
+        RssConfiguration conf = new RssConfiguration(new File(""));
         conf.configure();
 
         if(!RssDocStore.getRssDocs().isEmpty()) {
