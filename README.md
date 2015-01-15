@@ -32,18 +32,23 @@ Configuration
 Configuration is defined in hirss.properties; you can override these parameters:
 
 \#binding address of HTTP Server
+
 binding_address=127.0.0.1
 
 \#binding port of HTTP Server
+
 port=1225
 
 \#max concurrent HTTP request
+
 max_threads=50
 
 \#default folder where RSS XML are generated
+
 rss_folder=.hirss/rss
 
 \#interval in milliseconds to upload the RSS
+
 rss_update_period=5000
 
 
