@@ -8,6 +8,7 @@ Compile
 You need Apache Maven.
 
 From root directory open a terminal and execute:
+
 mvn assembly:assembly
 mvn jar:jar
 
@@ -17,6 +18,7 @@ Extract the zip (it cointains a jar file and a lib folder/)
 Run
 -------------------
 Open a terminal and execute:
+
 java -jar hirss.jar
 
 A new HTTP Server listening by default on port 1225 will start and, depending on the plugins created,
