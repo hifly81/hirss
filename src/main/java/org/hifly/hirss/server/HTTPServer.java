@@ -10,6 +10,8 @@ import org.mortbay.jetty.handler.HandlerList;
 import org.mortbay.jetty.handler.ResourceHandler;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 
+import java.io.File;
+
 public class HTTPServer {
 
     public HTTPServer(RssConfiguration config) throws Exception {
@@ -22,7 +24,7 @@ public class HTTPServer {
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setWelcomeFiles(new String[]{"index.html"});
 
-        resource_handler.setResourceBase(config.getConfigMap().get("rss_folder"));
+        resource_handler.setResourceBase(System.getProperty("user.home") + File.separator + config.getConfigMap().get("rss_folder"));
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, new DefaultHandler()});
