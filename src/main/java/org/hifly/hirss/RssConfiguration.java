@@ -18,7 +18,8 @@ public class RssConfiguration {
             put("binding_address", "127.0.0.1");
             put("port", "1225");
             put("max_threads", "50");
-            put("rss_folder", ".");
+            put("rss_folder", ".hirss/rss");
+            put("rss_update_period","5000");
         }
     };
 
@@ -63,7 +64,7 @@ public class RssConfiguration {
 
     private Properties readConfigFile() throws Exception {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("test.properties");
+        InputStream is = classloader.getResourceAsStream("hirss.properties");
         Properties properties;
         try  {
             properties = new Properties();

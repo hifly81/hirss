@@ -64,7 +64,8 @@ public class PluginLoader {
                 Object [] args = { rss, conf};
                 SimpleTask task = new SimpleTask(method, args, rss.getLink());
                 Timer time = new Timer();
-                time.schedule(task, 0, 60*5000);
+                int interval = Integer.valueOf(conf.getConfigMap().get("rss_update_period"));
+                time.schedule(task, 0, 60 * interval);
 
             }
         }

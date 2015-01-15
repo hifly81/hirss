@@ -10,9 +10,11 @@ You need Apache Maven.
 From root directory open a terminal and execute:
 
 mvn assembly:assembly
+
 mvn jar:jar
 
-A zip file, hirss.zip will be created in target/ folder
+A zip file, hirss.zip will be created in target/ folder.
+
 Extract the zip (it cointains a jar file and a lib folder/)
 
 Run
@@ -21,8 +23,30 @@ Open a terminal and execute:
 
 java -jar hirss.jar
 
-A new HTTP Server listening by default on port 1225 will start and, depending on the plugins created,
+A new HTTP Server listening by default on port 1225 will start and, depending on the plugins created.
+
 RSS XML files will be generated in $HOME/.hirss/rss folder
+
+
+Configuration
+-------------------
+Configuration is defined in hirss.properties; you can override these parameters:
+
+#binding address of HTTP Server
+binding_address=127.0.0.1
+
+#binding port of HTTP Server
+port=1225
+
+#max concurrent HTTP request
+max_threads=50
+
+#default folder where RSS XML are generated
+rss_folder=.hirss/rss
+
+#interval in milliseconds to upload the RSS
+rss_update_period=5000
+
 
 
 Plugin
