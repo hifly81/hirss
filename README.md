@@ -3,9 +3,25 @@ Transform documents in RSS feeds for Java (hirss)
 hirss allows to transform no rss documents/info in rss feeds
 
 
-How to use
+Compile
 -------------------
-TODO
+You need Apache Maven.
+
+From root directory open a terminal and execute:
+mvn assembly:assembly
+mvn jar:jar
+
+A zip file, hirss.zip will be created in target/ folder
+Extract the zip (it cointains a jar file and a lib folder/)
+
+Run
+-------------------
+Open a terminal and execute:
+java -jar hirss.jar
+
+A new HTTP Server listening by default on port 1225 will start and, depending on the plugins created,
+RSS XML files will be generated in $HOME/.hirss/rss folder
+
 
 Plugin
 -------------------
@@ -14,24 +30,31 @@ TODO
 Third-Party Libraries
 --------------
 pf4j
+
 https://github.com/decebals/pf4j
 
 jsoup
+
 http://jsoup.org
 
 ROME
+
 http://rometools.github.io/rome
 
 jetty
+
 http://eclipse.org/jetty
 
 apache commons
+
 http://commons.apache.org
 
 apache commons codec
+
 http://commons.apache.org/proper/commons-codec
 
 slf4j
+
 http://www.slf4j.org
 
 
