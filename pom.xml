@@ -41,7 +41,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.hifly.hirss.BootPlugin</mainClass>
+                            <mainClass>org.hifly.hirss.Boot</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

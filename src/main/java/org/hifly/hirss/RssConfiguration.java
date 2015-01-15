@@ -3,18 +3,17 @@ package org.hifly.hirss;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 
-public class RssConfiguration extends AbstractConfiguration {
+public class RssConfiguration {
 
-    public Map<String,String> configMap = new HashMap<String,String>() {
+    protected Map<String,String> configMap = new HashMap<String,String>() {
         {
             put("binding_address", "127.0.0.1");
             put("port", "1225");
@@ -24,11 +23,8 @@ public class RssConfiguration extends AbstractConfiguration {
     };
 
 
-    public RssConfiguration(File file) {
-        super(file);
-    }
+    public RssConfiguration() {}
 
-    @Override
     public boolean validate() throws Exception {
         Properties properties;
         try {
@@ -53,12 +49,9 @@ public class RssConfiguration extends AbstractConfiguration {
             }
         }
 
-        super.configMap = configMap;
-
         return true;
     }
 
-    @Override
     public void configure() throws Exception {
         validate(); //validation
     }
@@ -69,19 +62,24 @@ public class RssConfiguration extends AbstractConfiguration {
     }
 
     private Properties readConfigFile() throws Exception {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream("test.properties");
         Properties properties;
-        FileInputStream fis = null;
         try  {
-            fis = new FileInputStream(getConfigFile());
             properties = new Properties();
-            properties.load(fis);
+            properties.load(is);
         } catch (IOException io) {
             throw new Exception(io);
         }
         finally {
-           if(fis != null)
-               fis.close();
+           if(is != null)
+               is.close();
         }
         return properties;
     }
+
+    public Map<String, String> getConfigMap() {
+        return configMap;
+    }
+
 }

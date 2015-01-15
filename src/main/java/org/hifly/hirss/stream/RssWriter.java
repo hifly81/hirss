@@ -42,7 +42,7 @@ public class RssWriter {
 
         feed.setEntries(entries);
 
-        Writer writer = new FileWriter(config.getConfigMap().get("rss_folder") + File.separator + DigestUtils.md5Hex(rssDoc.getTitle()));
+        Writer writer = new FileWriter(System.getProperty("user.home") + File.separator + config.getConfigMap().get("rss_folder") + File.separator + DigestUtils.md5Hex(rssDoc.getTitle()));
         SyndFeedOutput output = new SyndFeedOutput();
         output.output(feed,writer);
         writer.close();
