@@ -59,12 +59,13 @@ You can create plugins simply adding a java class annotated with @Extension and 
 SimpleRssDoc.
 
 @Extension
+
 public class HelloWorld implements SimpleRssDoc {
 
 Your class must fetch data from somewhere (web scraping as an example) and returning an instance of java object
 org.hifly.hirss.model.Rss
 
-After creting your plugin simply recompile the entire project and run it.
+After creating your plugin simply recompile the entire project and run it.
 
 The plugin will be automatically discovered and a new RSS XML file will be generated with your feeds.
 
@@ -76,6 +77,10 @@ pf4j
 https://github.com/decebals/pf4j
 
 jsoup
+
+(a useful library to grab content from web pages;
+
+it's not need by the core project, HelloWorld plugin just use it as an example)
 
 http://jsoup.org
 
