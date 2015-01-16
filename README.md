@@ -1,6 +1,6 @@
 Transform documents in RSS feeds for Java (hirss)
 =====================
-hirss allows to transform no rss documents/info in rss feeds
+hirss allows to transform no RSS documents/info in rss feeds
 
 
 Compile
@@ -55,7 +55,19 @@ rss_update_period=5000
 
 Plugin
 -------------------
-TODO
+You can create plugins simply adding a java class annotated with @Extension and implementing the interface
+SimpleRssDoc.
+
+@Extension
+public class HelloWorld implements SimpleRssDoc {
+
+Your class must fetch data from somewhere (web scraping as an example) and returning an instance of java object
+org.hifly.hirss.model.Rss
+
+After creting your plugin simply recompile the entire project and run it.
+
+The plugin will be automatically discovered and a new RSS XML file will be generated with your feeds.
+
 
 Third-Party Libraries
 --------------
