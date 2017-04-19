@@ -19,12 +19,14 @@ import java.util.Timer;
 public class PluginLoader {
 
     private PluginManager pluginManager;
+    private RssConfiguration rssConfiguration;
 
-    public PluginLoader() {
+    public PluginLoader(RssConfiguration rssConfiguration) {
         pluginManager = new DefaultPluginManager();
         //default load and start plugins
         pluginManager.loadPlugins();
         pluginManager.startPlugins();
+        this.rssConfiguration = rssConfiguration;
     }
 
     public void stopPlugins() {
@@ -35,14 +37,14 @@ public class PluginLoader {
         List<SimpleRssDoc> rssDocs = pluginManager.getExtensions(SimpleRssDoc.class);
         if(rssDocs !=null) {
             for (SimpleRssDoc rssDoc : rssDocs) {
-                RssDocStore.getRssDocs().add(rssDoc.getDocument());
+                RssDocStore.getRssDocs().add(rssDoc.getDocument(rssConfiguration));
             }
         }
 
         Set<String> extensionClassNames = pluginManager.getExtensionClassNames(null);
         for (String extension : extensionClassNames) {
             SimpleRssDoc rssDoc = (SimpleRssDoc)Class.forName(extension).newInstance();
-            RssDocStore.getRssDocs().add(rssDoc.getDocument());
+            RssDocStore.getRssDocs().add(rssDoc.getDocument(rssConfiguration));
         }
 
         List<PluginWrapper> startedPlugins = pluginManager.getStartedPlugins();
@@ -51,20 +53,20 @@ public class PluginLoader {
             extensionClassNames = pluginManager.getExtensionClassNames(pluginId);
             for (String extension : extensionClassNames) {
                 SimpleRssDoc rssDoc = (SimpleRssDoc)Class.forName(extension).newInstance();
-                RssDocStore.getRssDocs().add(rssDoc.getDocument());
+                RssDocStore.getRssDocs().add(rssDoc.getDocument(rssConfiguration));
             }
         }
     }
 
-    public void runExtensions(RssConfiguration conf) throws Exception {
+    public void runExtensions() throws Exception {
         if(!RssDocStore.getRssDocs().isEmpty()) {
             for(Rss rss: RssDocStore.getRssDocs())  {
                 Method method = RssWriter.class.getMethod("generateFeed",
                         new Class[] { Rss.class, RssConfiguration.class});
-                Object [] args = { rss, conf};
+                Object [] args = { rss, rssConfiguration};
                 SimpleTask task = new SimpleTask(method, args, rss.getLink());
                 Timer time = new Timer();
-                int interval = Integer.valueOf(conf.getConfigMap().get("rss_update_period"));
+                int interval = Integer.valueOf(rssConfiguration.getConfigMap().get("rss_update_period"));
                 time.schedule(task, 0, 60 * interval);
 
             }

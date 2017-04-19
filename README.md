@@ -26,6 +26,9 @@ java -jar hirss.jar
 A new HTTP Server listening by default on port 1225 will start and, depending on the plugins created,
 RSS XML files will be generated in $HOME/.hirss/rss folder
 
+Just add the name of the rss feed (file) generated inside $HOME/.hirss/rss folder in your rss feed reader;
+example http://127.0.0.1:1225/b10a8db164e0754105b7a99be72e3fe5
+
 
 Configuration
 -------------------
@@ -50,6 +53,10 @@ rss_folder=.hirss/rss
 \#interval in milliseconds to upload the RSS
 
 rss_update_period=5000
+
+\#timeout in seconds to establish a connection to the source
+
+rss_connect_timeout=25000
 
 
 

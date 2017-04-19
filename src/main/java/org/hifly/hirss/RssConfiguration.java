@@ -20,6 +20,7 @@ public class RssConfiguration {
             put("max_threads", "50");
             put("rss_folder", ".hirss/rss");
             put("rss_update_period","5000");
+            put("rss_connect_timeout","25000");
         }
     };
 

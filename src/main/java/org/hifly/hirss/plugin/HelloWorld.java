@@ -1,25 +1,20 @@
 package org.hifly.hirss.plugin;
 
 
+import org.hifly.hirss.RssConfiguration;
 import org.hifly.hirss.extensionpoint.SimpleRssDoc;
 import org.hifly.hirss.model.Item;
 import org.hifly.hirss.model.ItemDescription;
 import org.hifly.hirss.model.Rss;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import ro.fortsoft.pf4j.Extension;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Extension
 public class HelloWorld implements SimpleRssDoc {
 
-    @Override
-    public Rss getDocument() {
+    public Rss getDocument(RssConfiguration rssConfiguration) {
         String url = "http://www.google.com"; //TODO config url
         Rss rss = new Rss();
         rss.setTitle("Hello World");
@@ -43,8 +38,7 @@ public class HelloWorld implements SimpleRssDoc {
 
             rss.setItems(items);
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             e.printStackTrace();
         }
 
