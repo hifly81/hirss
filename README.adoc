@@ -1,4 +1,4 @@
-= Transform documents in RSS feeds for Java (hirss)
+= Transform documents in RSS feeds
 
 hirss allows to transform no RSS documents/info in rss feeds
 
