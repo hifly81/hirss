@@ -11,9 +11,9 @@ public class SimpleTask extends TimerTask {
 
     private static Logger log = LoggerFactory.getLogger(SimpleTask.class);
 
-    private Method method;
-    private Object[] args;
-    private String key;
+    private final Method method;
+    private final Object[] args;
+    private final String key;
 
     public SimpleTask(Method method, Object[] args, String key) {
         this.method = method;

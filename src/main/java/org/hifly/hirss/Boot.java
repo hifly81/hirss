@@ -1,6 +1,5 @@
 package org.hifly.hirss;
 
-
 import org.hifly.hirss.plugin.PluginLoader;
 import org.hifly.hirss.server.HTTPServer;
 
@@ -27,7 +26,6 @@ public class Boot {
         });
 
         new HTTPServer(conf);
-
 
     }
 }

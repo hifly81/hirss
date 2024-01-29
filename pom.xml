@@ -6,11 +6,11 @@
 
     <groupId>org.hifly.hirss</groupId>
     <artifactId>hirss</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 
@@ -18,7 +18,10 @@
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
                 <configuration>
+                    <finalName>hirss-${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
                             <mainClass>org.hifly.hirss.Boot</mainClass>
@@ -34,46 +37,55 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>ro.fortsoft.pf4j</groupId>
             <artifactId>pf4j</artifactId>
             <version>0.9.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.1</version>
         </dependency>
+
         <dependency>
             <groupId>com.rometools</groupId>
             <artifactId>rome</artifactId>
             <version>1.5.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>jetty</artifactId>
             <version>6.1.26</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
         </dependency>
+
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.9</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.9</version>
         </dependency>
+
     </dependencies>
 
 

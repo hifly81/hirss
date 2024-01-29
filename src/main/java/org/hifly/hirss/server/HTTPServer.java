@@ -1,6 +1,5 @@
 package org.hifly.hirss.server;
 
-
 import org.hifly.hirss.RssConfiguration;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Handler;
@@ -18,7 +17,7 @@ public class HTTPServer {
         Server server = new Server();
         Connector connector = new SelectChannelConnector();
         connector.setHost((config.getConfigMap().get("binding_address")));
-        connector.setPort(Integer.valueOf(config.getConfigMap().get("port")));
+        connector.setPort(Integer.parseInt(config.getConfigMap().get("port")));
         server.addConnector(connector);
 
         ResourceHandler resource_handler = new ResourceHandler();

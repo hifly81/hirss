@@ -1,10 +1,8 @@
 package org.hifly.hirss.model;
 
-
 import java.util.Date;
 
 public class Item {
-
     protected String title;
     protected String link;
     protected Date published;

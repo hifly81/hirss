@@ -1,6 +1,5 @@
 package org.hifly.hirss;
 
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
 
 public class RssConfiguration {
 
@@ -27,7 +25,7 @@ public class RssConfiguration {
 
     public RssConfiguration() {}
 
-    public boolean validate() throws Exception {
+    public void validate() throws Exception {
         Properties properties;
         try {
             properties = readConfigFile();    //read property file
@@ -40,7 +38,7 @@ public class RssConfiguration {
         if (keysSize != propsKeysSize) //invalid number of keys
             throw new IllegalStateException("Config file not complaint");
 
-        Enumeration enuKeys = properties.keys();
+        Enumeration<Object> enuKeys = properties.keys();
         while (enuKeys.hasMoreElements()) {
             String key = (String) enuKeys.nextElement();
             String value = properties.getProperty(key);
@@ -51,7 +49,6 @@ public class RssConfiguration {
             }
         }
 
-        return true;
     }
 
     public void configure() throws Exception {

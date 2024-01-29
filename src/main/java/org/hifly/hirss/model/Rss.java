@@ -1,6 +1,5 @@
 package org.hifly.hirss.model;
 
-
 import java.util.List;
 
 public class Rss {

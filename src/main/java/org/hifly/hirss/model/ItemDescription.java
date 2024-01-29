@@ -1,6 +1,5 @@
 package org.hifly.hirss.model;
 
-
 public class ItemDescription {
 
     //TODO model as mime type

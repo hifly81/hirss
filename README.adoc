@@ -4,7 +4,7 @@ hirss allows to transform no RSS documents/info in rss feeds
 
 == Compile
 
-You need Apache Maven.
+You need _Apache Maven version 3.x_
 
 From root directory open a terminal and execute:
 
@@ -13,7 +13,7 @@ From root directory open a terminal and execute:
 mvn clean compile assembly:single
 ----
 
-A jar file,  hirss-*.jar will be created in target/ folder.
+A jar file, _hirss-1.0.jar_ will be created in _target/_ folder.
 
 == Run
 
@@ -21,18 +21,19 @@ Open a terminal and execute:
 
 [source,bash]
 ----
-java -jar target/hirss-*.jar
+java -jar target/hirss-1.0.jar
 ----
 
-A new HTTP Server listening by default on port 1225 will start and, depending on the plugins created,
-RSS XML files will be generated in $HOME/.hirss/rss folder
+A new HTTP Server listening by default on port _1225_ will start and, depending on the plugins created,
+RSS XML files will be generated in _$HOME/.hirss/rss_ folder
 
-Just add the name of the rss feed (file) generated inside $HOME/.hirss/rss folder in your rss feed reader;
-example http://127.0.0.1:1225/b10a8db164e0754105b7a99be72e3fe5
+Just add the name of the rss feed (file) generated inside _$HOME/.hirss/rss_ folder in your rss feed reader;
+
+example: _http://127.0.0.1:1225/b10a8db164e0754105b7a99be72e3fe5_
 
 == Configuration
 
-Configuration is defined in hirss.properties; you can override these parameters:
+Configuration is defined in _hirss.properties_; you can override these parameters:
 
 [source,bash]
 ----
@@ -53,15 +54,20 @@ rss_connect_timeout=25000
 
 == Plugin
 
-You can create plugins simply adding a java class annotated with @Extension and implementing the interface
-SimpleRssDoc.
+You can create plugins simply adding a java class annotated with _@Extension_ and implementing the interface _SimpleRssDoc_.
 
 @Extension
 
+[source,java]
+----
 public class HelloWorld implements SimpleRssDoc {
+    .....
+}
+----
 
-Your class must fetch data from somewhere (web scraping as an example) and returning an instance of java object
-org.hifly.hirss.model.Rss
+Your class must fetch data from somewhere (web scraping as an example) and returning an instance of java object _org.hifly.hirss.model.Rss_
+
+For an example look at the definition of class _plugin/HelloWorld.java_
 
 After creating your plugin simply recompile the entire project and run it.
 

@@ -1,6 +1,5 @@
 package org.hifly.hirss.plugin;
 
-
 import org.hifly.hirss.RssConfiguration;
 import org.hifly.hirss.extensionpoint.SimpleRssDoc;
 import org.hifly.hirss.model.Rss;
@@ -18,8 +17,8 @@ import java.util.Timer;
 
 public class PluginLoader {
 
-    private PluginManager pluginManager;
-    private RssConfiguration rssConfiguration;
+    private final PluginManager pluginManager;
+    private final RssConfiguration rssConfiguration;
 
     public PluginLoader(RssConfiguration rssConfiguration) {
         pluginManager = new DefaultPluginManager();
@@ -66,8 +65,8 @@ public class PluginLoader {
                 Object [] args = { rss, rssConfiguration};
                 SimpleTask task = new SimpleTask(method, args, rss.getLink());
                 Timer time = new Timer();
-                int interval = Integer.valueOf(rssConfiguration.getConfigMap().get("rss_update_period"));
-                time.schedule(task, 0, 50 * interval);
+                int interval = Integer.parseInt(rssConfiguration.getConfigMap().get("rss_update_period"));
+                time.schedule(task, 0, 50L * interval);
 
             }
         }
